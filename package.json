@@ -1,6 +1,6 @@
 {
   "name": "vfs",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Experimental SFTP over WebSockets filesystem client running on top of SSHFS",
   "main": "./index.js",
   "bin": {

@@ -14,7 +14,7 @@ In future, it might support other kinds of virtual filesystems as well.
 1. Setup an [SFTP over WebSockets server](https://www.npmjs.com/package/sftp-ws/) at the remote machine (or skip this step and try `wss://nuane.com/sftp`).
 2. Install `sshfs` at the client (in Debian/Ubuntu, run `apt-get install sshfs` as root).
 3. Install `vfs` at the client by running `npm install vfs` (add `-g` as root to install globally).
-4. Mount a remote filesystem to a local directory by running `vfs url mountpoint` (for example `vfs wss://nuane.com/sftp ~/sftp).
+4. Mount a remote filesystem to a local directory by running `vfs url mountpoint` (for example `vfs wss://nuane.com/sftp ~/sftp`). Optionally, add `--path=path_name` to specify a remote path if you only wish to mount a part of the remote filesystem.
 5. Enjoy the remote filesystem! :-)
 
 ## Missing features

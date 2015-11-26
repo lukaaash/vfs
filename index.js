@@ -9,7 +9,8 @@ var WebSocketChannelFactory = SFTP.Internals.WebSocketChannelFactory;
 // parse arguments with minimist
 var args = shell.parse(process.argv);
 var url = args._[2];
-var path = args._[3];
+var mountpoint = args._[3];
+var path = "" + args.path;
 
 // handle arguments
 if (args.h) {
@@ -18,12 +19,12 @@ if (args.h) {
 } else if (!url) {
     console.log("missing url");
 
-    if (!path) {
-	    console.log("see `vfs -h` for usage");
+    if (!mountpoint) {
+        console.log("see `vfs -h` for usage");
     }
 
     process.exit(1);
-} else if (!path) {
+} else if (!mountpoint) {
     console.log("missing mountpoint");
     process.exit(1);
 }
@@ -41,7 +42,7 @@ factory.connect(Url.format(url), options, function (err, remote) {
     // spawn `sshfs` in slave mode
     var child;
     try {
-	    child = spawn("sshfs", [url.host + ":", path, "-o", "slave"], { stdio: ["pipe", "pipe", process.stderr] });
+	    child = spawn("sshfs", [url.host + ":" + path, mountpoint, "-o", "slave"], { stdio: ["pipe", "pipe", process.stderr] });
     } catch (err) {
 	    return error(err);
     }
