@@ -42,7 +42,7 @@ factory.connect(Url.format(url), options, function (err, remote) {
     // spawn `sshfs` in slave mode
     var child;
     try {
-	    child = spawn("sshfs", [url.host + ":" + path, mountpoint, "-o", "slave"], { stdio: ["pipe", "pipe", process.stderr] });
+	    child = spawn("sshfs", [url.hostname + ":" + path, mountpoint, "-o", "slave"], { stdio: ["pipe", "pipe", process.stderr] });
     } catch (err) {
 	    return error(err);
     }
